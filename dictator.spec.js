@@ -56,5 +56,17 @@ describe('Redux Dictator', () => {
                 a: 1
             })
         })
+
+        it('creates a setter action for multiple properties', () => {
+            const stateProps = ['a', 'b']
+            const {actions, reducer} = dictator(stateProps)
+
+            const stateA = reducer({}, actions.a(1))
+
+            expect(reducer(stateA, actions.b(2))).toEqual({
+                a: 1,
+                b: 2,
+            })
+        })
     })
 })
