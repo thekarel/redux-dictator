@@ -24,12 +24,20 @@ const makeActionsForProps = (props) => props.length
     ? reduceToActions(props)
     : {}
 
+const makeDispatchToProps = (props, actions) => (dispatch) => props.reduce(
+    (map, prop) => ({
+        ...map,
+        [prop]: (value) => dispatch(actions[prop](value))
+    }), {})
+
 export default (stateProps) => {
     const reducer = makeReducerForProps(stateProps)
     const actions = makeActionsForProps(stateProps)
+    const getDispatchToProps = makeDispatchToProps(stateProps, actions)
 
     return {
         reducer,
         actions,
+        getDispatchToProps,
     }
 }

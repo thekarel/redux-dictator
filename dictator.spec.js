@@ -69,4 +69,19 @@ describe('Redux Dictator', () => {
             })
         })
     })
+
+    describe('Map Dispatch to Props', () => {
+        it('returns a dispatch mapping for all actions', () => {
+            const dispatch = jest.fn()
+            const stateProps = ['price', 'amount']
+            const {getDispatchToProps} = dictator(stateProps)
+            const mapDispatchToProps = getDispatchToProps(dispatch)
+
+            mapDispatchToProps.price('£1')
+            expect(dispatch).toHaveBeenCalledWith({type: 'price', payload: '£1'})
+
+            mapDispatchToProps.amount(2)
+            expect(dispatch).toHaveBeenCalledWith({type: 'amount', payload: 2})
+        })
+    })
 })
