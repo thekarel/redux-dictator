@@ -5,6 +5,8 @@ and dispatch-to-props automagically. 88% less Redux boilerplate! 🎉
 
 Great for prototyping plus allows you to gradually move to more elaborate solutions. 🏎
 
+State variables named `List` get extra actions to easily add and remove items -- see `dictator.spec.js` for details.
+
 [![Build Status](https://travis-ci.org/thekarel/redux-dictator.svg?branch=master)](https://travis-ci.org/thekarel/redux-dictator)
 
 ## Before
@@ -57,4 +59,14 @@ export default connect(
     (state) => ({ /* ... */ }),
     getDispatchToProps,
 )(ConnectedComponent)
+```
+
+## Lists
+
+```
+const {actions} = dictator(['productList'])
+
+actions.productList(['tablet', 'pc'])
+actions.productListAdd('phone')
+actions.productListRemove('pc')
 ```
