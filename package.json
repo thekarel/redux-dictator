@@ -1,24 +1,25 @@
 {
-  "name": "redux-dictator",
-  "version": "0.0.1",
-  "description": "Declarative state tree",
   "author": "Charles Szilagyi <k@szil.me>",
   "dependencies": {
-    "react": "^15.4.2",
-    "react-redux": "^5.0.3",
-    "redux": "^3.6.0",
     "redux-actions": "^2.0.1"
   },
-  "scripts": {
-    "test": "jest",
-    "watch": "jest --watch"
-  },
   "devDependencies": {
-    "jest": "^19.0.2",
+    "babel-cli": "^6.24.1",
     "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-plugin-transform-es2015-parameters": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0"
-  }
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "jest": "^19.0.2"
+  },
+  "description": "Declarative state tree",
+  "license": "MIT",
+  "main": "dist/dictator.js",
+  "name": "redux-dictator",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch",
+    "build": "babel --ignore *.spec.js --out-dir dist/ src"
+  },
+  "version": "0.0.1"
 }
