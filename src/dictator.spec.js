@@ -1,6 +1,6 @@
 /* @flow */
 
-import dictator from './dictator'
+const dictator = require('./dictator')
 
 describe('Redux Dictator', () => {
     describe('Reducer', () => {

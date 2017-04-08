@@ -91,7 +91,7 @@ const makeDispatchToProps = (actions) => (dispatch) => {
     return result
 }
 
-export default (stateProps) => {
+module.exports = (stateProps) => {
     const reducer = makeReducerForProps(stateProps)
     const actions = makeActionsForProps(stateProps)
     const getDispatchToProps = makeDispatchToProps(actions)
