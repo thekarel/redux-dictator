@@ -61,12 +61,14 @@ export default connect(
 )(ConnectedComponent)
 ```
 
-## Lists
+## Actions
 
 ```
-const {actions} = dictator(['productList'])
+const {actions} = dictator(['name', 'productList'])
 
-actions.productList(['tablet', 'pc'])
+actions.nameSet(['Bob'])
+
+actions.productListSet(['tablet', 'pc'])
 actions.productListAdd('phone')
 actions.productListRemove('pc')
 ```
