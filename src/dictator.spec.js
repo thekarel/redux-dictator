@@ -45,6 +45,17 @@ describe('Redux Dictator', () => {
         })
 
         describe('List', () => {
+            it('sets list', () => {
+                const {reducer} = dictator(['itemList'])
+
+                expect(reducer({}, {
+                    type: 'itemListSet',
+                    payload: [1, 2, 3]
+                })).toEqual({
+                    itemList: [1, 2, 3]
+                })
+            })
+
             it('adds an item to an empty list', () => {
                 const {reducer} = dictator(['itemList'])
 
