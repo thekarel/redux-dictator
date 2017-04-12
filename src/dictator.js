@@ -2,11 +2,12 @@ import {createAction, handleActions} from 'redux-actions'
 
 const isListProp = (propName) => propName.endsWith('List')
 
+const propNameToSet = (propName) => `${propName}Set`
 const propNameToAdd = (propName) => `${propName}Add`
 const propNameToRemove = (propName) => `${propName}Remove`
 
 const setterAction = (propName) => ({
-    [propName]: (state, {payload}) => ({...state, [propName]: payload})
+    [propNameToSet(propName)]: (state, {payload}) => ({...state, [propName]: payload})
 })
 
 const listAddAction = (propName) => ({
@@ -60,13 +61,13 @@ const makeReducerForProps = (props) => {
 const propToAction = (propName) => {
     if (isListProp(propName)) {
         return ({
-            [propName]: createAction(propName),
+            [propNameToSet(propName)]: createAction(propNameToSet(propName)),
             [propNameToAdd(propName)]: createAction(propNameToAdd(propName)),
             [propNameToRemove(propName)]: createAction(propNameToRemove(propName)),
         })
     } else {
         return ({
-            [propName]: createAction(propName)
+            [propNameToSet(propName)]: createAction(propNameToSet(propName))
         })
     }
 }

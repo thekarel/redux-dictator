@@ -4,11 +4,12 @@ var _reduxActions = require('redux-actions');
 
 const isListProp = propName => propName.endsWith('List');
 
+const propNameToSet = propName => `${propName}Set`;
 const propNameToAdd = propName => `${propName}Add`;
 const propNameToRemove = propName => `${propName}Remove`;
 
 const setterAction = propName => ({
-    [propName]: (state, _ref) => {
+    [propNameToSet(propName)]: (state, _ref) => {
         let payload = _ref.payload;
         return Object.assign({}, state, { [propName]: payload });
     }
@@ -57,13 +58,13 @@ const makeReducerForProps = props => {
 const propToAction = propName => {
     if (isListProp(propName)) {
         return {
-            [propName]: (0, _reduxActions.createAction)(propName),
+            [propNameToSet(propName)]: (0, _reduxActions.createAction)(propNameToSet(propName)),
             [propNameToAdd(propName)]: (0, _reduxActions.createAction)(propNameToAdd(propName)),
             [propNameToRemove(propName)]: (0, _reduxActions.createAction)(propNameToRemove(propName))
         };
     } else {
         return {
-            [propName]: (0, _reduxActions.createAction)(propName)
+            [propNameToSet(propName)]: (0, _reduxActions.createAction)(propNameToSet(propName))
         };
     }
 };

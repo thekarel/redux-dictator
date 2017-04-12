@@ -1,5 +1,3 @@
-/* @flow */
-
 const dictator = require('./dictator')
 
 describe('Redux Dictator', () => {
@@ -14,7 +12,7 @@ describe('Redux Dictator', () => {
             const stateProps = ['a']
             const {reducer} = dictator(stateProps)
 
-            expect(reducer({}, {type: 'a', payload: 1})).toEqual({
+            expect(reducer({}, {type: 'aSet', payload: 1})).toEqual({
                 a: 1
             })
         })
@@ -23,7 +21,7 @@ describe('Redux Dictator', () => {
             const stateProps = ['a']
             const {reducer} = dictator(stateProps)
 
-            expect(reducer({b: 2}, {type: 'a', payload: 1})).toEqual({
+            expect(reducer({b: 2}, {type: 'aSet', payload: 1})).toEqual({
                 a: 1,
                 b: 2,
             })
@@ -33,15 +31,15 @@ describe('Redux Dictator', () => {
             const stateProps = ['a', 'b', 'c']
             const {reducer} = dictator(stateProps)
 
-            expect(reducer({}, {type: 'a', payload: 1})).toEqual({
+            expect(reducer({}, {type: 'aSet', payload: 1})).toEqual({
                 a: 1
             })
 
-            expect(reducer({}, {type: 'b', payload: 1})).toEqual({
+            expect(reducer({}, {type: 'bSet', payload: 1})).toEqual({
                 b: 1
             })
 
-            expect(reducer({}, {type: 'c', payload: 1})).toEqual({
+            expect(reducer({}, {type: 'cSet', payload: 1})).toEqual({
                 c: 1
             })
         })
@@ -113,7 +111,7 @@ describe('Redux Dictator', () => {
             const stateProps = ['a']
             const {actions, reducer} = dictator(stateProps)
 
-            expect(reducer({}, actions.a(1))).toEqual({
+            expect(reducer({}, actions.aSet(1))).toEqual({
                 a: 1
             })
         })
@@ -122,9 +120,9 @@ describe('Redux Dictator', () => {
             const stateProps = ['a', 'b']
             const {actions, reducer} = dictator(stateProps)
 
-            const stateA = reducer({}, actions.a(1))
+            const stateA = reducer({}, actions.aSet(1))
 
-            expect(reducer(stateA, actions.b(2))).toEqual({
+            expect(reducer(stateA, actions.bSet(2))).toEqual({
                 a: 1,
                 b: 2,
             })
@@ -134,7 +132,7 @@ describe('Redux Dictator', () => {
             it('creates an action to set the list', () => {
                 const {actions, reducer} = dictator(['urlList'])
 
-                expect(reducer({}, actions.urlList([1, 2]))).toEqual({
+                expect(reducer({}, actions.urlListSet([1, 2]))).toEqual({
                     urlList: [1, 2]
                 })
             })
@@ -165,11 +163,11 @@ describe('Redux Dictator', () => {
             const {getDispatchToProps} = dictator(stateProps)
             const mapDispatchToProps = getDispatchToProps(dispatch)
 
-            mapDispatchToProps.price('£1')
-            expect(dispatch).toHaveBeenCalledWith({type: 'price', payload: '£1'})
+            mapDispatchToProps.priceSet('£1')
+            expect(dispatch).toHaveBeenCalledWith({type: 'priceSet', payload: '£1'})
 
-            mapDispatchToProps.amount(2)
-            expect(dispatch).toHaveBeenCalledWith({type: 'amount', payload: 2})
+            mapDispatchToProps.amountSet(2)
+            expect(dispatch).toHaveBeenCalledWith({type: 'amountSet', payload: 2})
         })
 
         describe('List', () => {
