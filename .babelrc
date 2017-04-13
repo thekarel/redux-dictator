@@ -4,6 +4,7 @@
       "transform-es2015-destructuring",
       ["transform-object-rest-spread", {"useBuiltIns": true}],
       "transform-es2015-parameters",
-      "syntax-trailing-function-commas"
+      "syntax-trailing-function-commas",
+      "transform-es2015-arrow-functions",
   ]
 }

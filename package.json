@@ -6,6 +6,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-plugin-transform-es2015-parameters": "^6.23.0",
